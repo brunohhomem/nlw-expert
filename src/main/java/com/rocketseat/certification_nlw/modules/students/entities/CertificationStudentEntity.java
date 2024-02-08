@@ -28,7 +28,7 @@ public class CertificationStudentEntity {
   @GeneratedValue(strategy = GenerationType.UUID)
   private UUID id;
 
-  @Column(length = 100)
+  @Column(length = 50)
   private String technology;
 
   @Column(length = 10)
