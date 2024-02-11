@@ -35,7 +35,10 @@ public class QuestionController {
   }
 
   static QuestionResultDTO mapQuestionToDTO(QuestionEntity question) {
-    var questionResultDTO = QuestionResultDTO.builder().description(question.getDescription()).build();
+    var questionResultDTO = QuestionResultDTO.builder()
+        .id(question.getId())
+        .technology(question.getTechnology())
+        .description(question.getDescription()).build();
 
     List<AlternativesResultDTO> alternativesResultDTOs = question.getAlternatives().stream()
         .map(alternative -> mapAlternativeDTO(alternative))
@@ -43,11 +46,12 @@ public class QuestionController {
 
     questionResultDTO.setAlternatives(alternativesResultDTOs);
     return questionResultDTO;
-
   }
 
   static AlternativesResultDTO mapAlternativeDTO(AlternativesEntity alternativesResultDTO) {
-
+    return AlternativesResultDTO.builder()
+        .id(alternativesResultDTO.getId())
+        .description(alternativesResultDTO.getDescription()).build();
   }
 
 }
